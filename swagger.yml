@@ -1,0 +1,346 @@
+openapi: 3.0.0
+servers:
+    - description: Especificación Cake-Express-Back Api
+      url: 'http://HOST:PORT/cake-express-back/v1'
+info:
+    description: Cake-Express-Back Api
+    version: "v1"
+    title: Cake-Express-Back Api
+    contact:
+        name: 'API Support'
+tags:
+    - name: services
+      description: 'Operaciones de servicios'
+
+paths:
+    '/clients':
+        post:
+            tags:
+                - Clients
+            summary: Add a new client
+            description: Servicio que inserta un cliente en BBDD
+            operationId: addClient
+
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ClientRqType'
+
+            responses:
+                '201':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ClientRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'   
+        get:
+            tags:
+                - Clients
+            summary: Get all clients
+            description: Servicio recupera todos los clientes de la BBDD
+            operationId: getClient
+
+            responses:
+                '200':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ClientArrayRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'                    
+
+    '/clients/{id}':        
+        get:
+            tags:
+                - Clients
+            summary: Get client by id
+            description: Servicio que recupera un cliente a partir de su ID
+            operationId: getClientById
+
+            responses:
+                '200':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ClientRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'        
+        put:
+            tags:
+                - Clients
+            summary: Update a client by id
+            description: Servicio que modifica los datos de un cliente
+            operationId: putClient
+
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ClientRqType'
+
+            responses:
+                '200':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ClientRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'     
+        delete:
+            tags:
+                - Clients
+            summary: Delete a client by id
+            description: Servicio que elimina los datos de un cliente
+            operationId: deleteClient
+
+            responses:
+                '200':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ClientRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'     
+    
+    '/products':
+        post:
+            tags:
+                - Products
+            summary: Add a new product
+            description: Servicio que inserta un producto en BBDD
+            operationId: addProduct
+
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ProductRqType'
+
+            responses:
+                '201':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ProductRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'   
+        get:
+            tags:
+                - Products
+            summary: Get all products
+            description: Servicio recupera todos los productos de la BBDD
+            operationId: getProduct
+
+            responses:
+                '200':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ProductArrayRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'   
+
+    '/products/{id}':        
+        get:
+            tags:
+                - Products
+            summary: Get product by id
+            description: Servicio que recupera un producto a partir de su ID
+            operationId: getProductById
+
+            responses:
+                '200':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ProductRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'        
+        put:
+            tags:
+                - Products
+            summary: Update a product by id
+            description: Servicio que modifica los datos de un producto
+            operationId: putProduct
+
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ProductRqType'
+
+            responses:
+                '200':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ProductRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'     
+        delete:
+            tags:
+                - Products
+            summary: Delete a product by id
+            description: Servicio que elimina los datos de un producto
+            operationId: deleteProduct
+
+            responses:
+                '200':
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ProductRsType'
+                '400':
+                    $ref: '#/components/responses/400'
+                '401':
+                    $ref: '#/components/responses/401'
+                '5XX':
+                    $ref: '#/components/responses/5XX'     
+
+components:
+
+    responses:
+        400:
+            description: 'Bad request.'
+            content:
+                application/json:
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/components/schemas/ErrorMessageType'
+        401:
+            description: 'Información de autorización no disponible o inválida'
+        403:
+            description: |
+                La solicitud fue legal, pero el servidor rehúsa responderla dado que el
+                cliente no tiene los privilegios para hacerla.
+        404:
+            description: Not found
+        5XX:
+            description: Unexpected error.
+
+    schemas:
+
+        ErrorMessageType:
+            type: object
+            required:
+                - message
+            properties:
+                code:
+                    type: string
+                name:
+                    type: string
+                message:
+                    type: string
+
+
+        ClientRqType:
+            type: object
+            required:
+                - name
+                - document             
+            properties:
+                name:
+                    type: string
+                document:
+                    type: string
+                telephone:
+                    type: string
+                address:
+                    type: string
+                city:
+                    type: string
+                province:
+                    type: string
+                postalCode:
+                    type: string
+        
+        ClientArrayRsType:
+            type: array
+            items:
+              $ref: '#/components/schemas/ClientRsType'
+
+        ClientRsType:
+          allOf:
+            - $ref: '#/components/schemas/ClientRqType'
+            - type: object
+              required:
+                  - id
+              properties:
+                  id:
+                      type: string
+        
+        ProductRqType:
+            type: object
+            required:
+                - name
+                - price             
+            properties:
+                name:
+                    type: string
+                price:
+                    type: number
+                
+        ProductArrayRsType:
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductRsType'
+
+        ProductRsType:
+          allOf:
+            - $ref: '#/components/schemas/ProductRqType'
+            - type: object
+              required:
+                  - id
+              properties:
+                  id:
+                      type: string
+                  

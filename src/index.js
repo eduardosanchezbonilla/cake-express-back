@@ -1,6 +1,7 @@
 import express from 'express'
 import config from './config'
 import router from './router'
+import db from './database'
 
 let _server
 
@@ -8,16 +9,20 @@ const server = {
     start(){
         const app = express()
 
-        config(app)   //cargamos la configuracion
-        router(app)
+        return db.connect()
+            .then( ()=> {
+                config(app)   //cargamos la configuracion
+                router(app)
 
-        const port = app.locals.config.PORT
-        const host = app.locals.config.HOST
-        _server = app.listen(port, () => {
-            console.log(`Servidor abierto en http://${host}:${port}`)
-        })  
-        
-        return _server
+                const port = app.locals.config.PORT
+                const host = app.locals.config.HOST
+                _server = app.listen(port, () => {
+                    console.log(`Servidor abierto en http://${host}:${port}`)
+                })  
+                
+                return _server
+            }
+        )        
     },
     close(){
         _server.close()
